@@ -13,7 +13,7 @@ namespace NewEmployeeFinder.Entities.Repositories
 
         Task<IEnumerable> GetAllAsync();
 
-        Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate); //Func delege predicate delegesi ???
+        IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate); //Func delege predicate delegesi ???
 
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
 
@@ -23,7 +23,7 @@ namespace NewEmployeeFinder.Entities.Repositories
 
         void Remove(TEntity entity);
 
-        void RemoveRange(TEntity entity);
+        void RemoveRange(TEntity entities);
 
         TEntity Update(TEntity entity);
     }

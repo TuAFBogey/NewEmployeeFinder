@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NewEmployeeFinder.Data\NewEmployeeFinder.Data.csproj" />
+    <ProjectReference Include="..\NewEmployeeFinder.Entities\NewEmployeeFinder.Core.csproj" />
+  </ItemGroup>
+
+</Project>

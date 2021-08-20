@@ -6,4 +6,3 @@ C:\Users\user\source\repos\NewEmployeeFinder\NewEmployeeFinder.Entities\obj\Debu
 C:\Users\user\source\repos\NewEmployeeFinder\NewEmployeeFinder.Entities\obj\Debug\netcoreapp3.1\NewEmployeeFinder.Core.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\NewEmployeeFinder\NewEmployeeFinder.Entities\obj\Debug\netcoreapp3.1\NewEmployeeFinder.Core.dll
 C:\Users\user\source\repos\NewEmployeeFinder\NewEmployeeFinder.Entities\obj\Debug\netcoreapp3.1\NewEmployeeFinder.Core.pdb
-C:\Users\user\source\repos\NewEmployeeFinder\NewEmployeeFinder.Entities\obj\Debug\netcoreapp3.1\NewEmployeeFinder.Core.csproj.AssemblyReference.cache
