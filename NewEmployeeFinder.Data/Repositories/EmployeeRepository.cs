@@ -12,7 +12,7 @@ namespace NewEmployeeFinder.Data.Repositories
     {
 
         private AppDbContext _appDbContext { get => _context as AppDbContext; }
-        public EmployeeRepository(DbContext context) : base(context)
+        public EmployeeRepository(AppDbContext context) : base(context)
         {
         }
 

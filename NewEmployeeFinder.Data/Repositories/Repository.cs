@@ -15,7 +15,7 @@ namespace NewEmployeeFinder.Data.Repositories
         protected readonly DbContext _context;
         private readonly DbSet<TEntity> _DbSet;
 
-        public Repository(DbContext context)
+        public Repository(AppDbContext context)
         {
             _context = context;
             _DbSet = context.Set<TEntity>();
@@ -30,9 +30,9 @@ namespace NewEmployeeFinder.Data.Repositories
             await _DbSet.AddRangeAsync(entities);
         }
 
-        public IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        public async Task <IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            return _DbSet.Where(predicate);
+            return await _DbSet.Where(predicate).ToListAsync();
         }
 
         public async Task<IEnumerable> GetAllAsync()

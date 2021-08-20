@@ -13,7 +13,7 @@ namespace NewEmployeeFinder.Entities.Repositories
 
         Task<IEnumerable> GetAllAsync();
 
-        IEnumerable<TEntity> Where(Expression<Func<TEntity, bool>> predicate); //Func delege predicate delegesi ???
+        Task <IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate); //Func delege predicate delegesi ???
 
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
 

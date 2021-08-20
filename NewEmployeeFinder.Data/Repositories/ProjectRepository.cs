@@ -11,7 +11,7 @@ namespace NewEmployeeFinder.Data.Repositories
     class ProjectRepository : Repository<Project>, IProjectRepository
     {
         private AppDbContext _appDbContext { get => _context as AppDbContext; }
-        public ProjectRepository(DbContext context) : base(context)
+        public ProjectRepository(AppDbContext context) : base(context)
         {
         }
 

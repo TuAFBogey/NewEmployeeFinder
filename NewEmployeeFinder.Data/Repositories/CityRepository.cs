@@ -11,7 +11,7 @@ namespace NewEmployeeFinder.Data.Repositories
     class CityRepository : Repository<City>, ICityRepository
     {
         private AppDbContext _appDbContext { get => _context as AppDbContext; }
-        public CityRepository(DbContext context) : base(context)
+        public CityRepository(AppDbContext context) : base(context)
         {
         }
 
