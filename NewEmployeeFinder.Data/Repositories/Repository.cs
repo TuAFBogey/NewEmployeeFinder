@@ -35,7 +35,7 @@ namespace NewEmployeeFinder.Data.Repositories
             return await _DbSet.Where(predicate).ToListAsync();
         }
 
-        public async Task<IEnumerable> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _DbSet.ToListAsync();
         }

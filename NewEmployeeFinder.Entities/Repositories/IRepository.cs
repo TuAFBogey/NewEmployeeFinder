@@ -11,7 +11,7 @@ namespace NewEmployeeFinder.Entities.Repositories
     {
         Task<TEntity> GetByIdAsync(int id);
 
-        Task<IEnumerable> GetAllAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync();
 
         Task <IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate); //Func delege predicate delegesi ???
 

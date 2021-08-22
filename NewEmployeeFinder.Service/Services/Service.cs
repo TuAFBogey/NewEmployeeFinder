@@ -35,7 +35,7 @@ namespace NewEmployeeFinder.Service.Services
             return entities;
         }
 
-        public async Task<IEnumerable> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }

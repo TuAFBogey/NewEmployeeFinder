@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewEmployeeFinder.Data", "N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewEmployeeFinder.API", "NewEmployeeFinder.API\NewEmployeeFinder.API.csproj", "{C531B73A-430F-4840-827F-982D85212F79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewEmployeeFinder.Service", "NewEmployeeFinder.Service\NewEmployeeFinder.Service.csproj", "{71A0B1BA-55E5-4F07-8697-DDF9CB165E9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewEmployeeFinder.Service", "NewEmployeeFinder.Service\NewEmployeeFinder.Service.csproj", "{71A0B1BA-55E5-4F07-8697-DDF9CB165E9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

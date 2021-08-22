@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NewEmployeeFinder.Core.Services
 {
-    public interface ICityService:IService<City>
+    public interface ICityService : IService<City>
     {
         Task<City> GetWithEmployeesByIdAsync(int cityId);
     }

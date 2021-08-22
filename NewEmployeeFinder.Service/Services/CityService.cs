@@ -19,5 +19,6 @@ namespace NewEmployeeFinder.Service.Services
         {
             return await _unitOfWork.Cities.GetWithEmployeesByIdAsync(cityId);
         }
+
     }
 }
