@@ -18,6 +18,11 @@ namespace NewEmployeeFinder.Entities.Entities
 
         public bool IsDeleted { get; set; }
 
+        /// <summary>
+        /// Entity Framework department üzerinden değişikleri izleyecek.
+        /// Tracking (izleme) yapabilmesi ve hafızasında tutabilmesi için
+        /// virtual tanımlanmıştır.
+        /// </summary>
         public virtual Department Department{get;set;}
 
         public virtual Project Project { get; set; }

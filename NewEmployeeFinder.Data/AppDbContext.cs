@@ -24,7 +24,9 @@ namespace NewEmployeeFinder.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ///modelBuilder.Entity<Employee>().HasKey(x => x.Id);  Bunları burda da tanımlayabilirdik ancak Best Practise açısından DbContext sınıfı ne kadar sade kalırsa o kadar daha iyi olur.
+            ///modelBuilder.Entity<Employee>().HasKey(x => x.Id);  
+            ///Bunları burda da tanımlayabilirdik ancak Best Practise açısından 
+            ///DbContext sınıfı ne kadar sade kalırsa o kadar daha iyi olur.
 
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentConfiguration());

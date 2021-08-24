@@ -10,7 +10,7 @@ namespace NewEmployeeFinder.API.DTOs
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "City Name is Required")]
         public string Name { get; set; }
     }
 }

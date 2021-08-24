@@ -13,8 +13,10 @@ namespace NewEmployeeFinder.Entities.Repositories
 
         Task<IEnumerable<TEntity>> GetAllAsync();
 
+        // x=>x.Id
         Task <IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate); //Func delege predicate delegesi ???
 
+        // x=>x.Name
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
 
         Task AddAsync(TEntity entity);

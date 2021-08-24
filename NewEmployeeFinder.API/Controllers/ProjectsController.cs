@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewEmployeeFinder.API.DTOs;
+using NewEmployeeFinder.API.Filters;
 using NewEmployeeFinder.Core.Services;
 using NewEmployeeFinder.Entities.Entities;
 using System;
@@ -44,6 +45,7 @@ namespace NewEmployeeFinder.API.Controllers
             return Ok(_mapper.Map<ProjectWithEmployeeDto>(project));
         }
 
+        [ValidationFilter]
         [HttpPost]
         public async Task<IActionResult> Save(ProjectDto projectDto)
         {
