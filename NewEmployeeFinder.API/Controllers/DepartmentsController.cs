@@ -33,6 +33,7 @@ namespace NewEmployeeFinder.API.Controllers
             return Ok(_mapper.Map<IEnumerable<DepartmentDto>>(departments));
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -40,6 +41,7 @@ namespace NewEmployeeFinder.API.Controllers
             return Ok(_mapper.Map<DepartmentDto>(department));
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpGet("{id}/employees")]
         public async Task<IActionResult> GetWithEmployeesById(int id)
         {
@@ -62,6 +64,7 @@ namespace NewEmployeeFinder.API.Controllers
             return NoContent();
         }
 
+        [ServiceFilter(typeof(NotFoundFilter))]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NewEmployeeFinder.API.Filters;
 using NewEmployeeFinder.Core.Services;
 using NewEmployeeFinder.Core.UnitOfWorks;
 using NewEmployeeFinder.Data;
@@ -69,6 +70,7 @@ namespace NewEmployeeFinder.API
             services.AddControllers();
             services.AddRazorPages();
 
+            services.AddScoped<NotFoundFilter>();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
