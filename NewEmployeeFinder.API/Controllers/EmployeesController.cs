@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewEmployeeFinder.API.DTOs;
@@ -12,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace NewEmployeeFinder.API.Controllers
 {
+    [Authorize]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase

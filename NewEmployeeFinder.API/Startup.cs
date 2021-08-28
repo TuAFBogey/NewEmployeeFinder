@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using NewEmployeeFinder.API.AuthService;
 using NewEmployeeFinder.API.Filters;
+using NewEmployeeFinder.API.IAuthService;
 using NewEmployeeFinder.Core.Services;
 using NewEmployeeFinder.Core.UnitOfWorks;
 using NewEmployeeFinder.Data;
@@ -41,6 +45,60 @@ namespace NewEmployeeFinder.API
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 
+            services.AddScoped<IAuthSrvc, AuthSrvc>();
+            services.AddVersionedApiExplorer(c =>
+            {
+                c.GroupNameFormat = "'v'VVV";
+                c.SubstituteApiVersionInUrl = true;
+                c.AssumeDefaultVersionWhenUnspecified = true;
+                c.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+
+            services.AddApiVersioning(c =>
+            {
+                c.ReportApiVersions = true;
+                c.AssumeDefaultVersionWhenUnspecified = true;
+                c.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.EnableAnnotations();
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "NewEmployeeFinder",
+                    Version = "v1",
+                    Description = "TuAF-Bogey"
+                });
+
+                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    In=Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Description="Basic Auth Header"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference=new OpenApiReference
+                        {
+                            Type=ReferenceType.SecurityScheme,
+                            Id="basic"
+                        }
+                    },
+                    new string[]{}
+                    }
+                });
+            });
+
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            services.AddRouting();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddDbContext<AppDbContext>(options =>
@@ -69,6 +127,7 @@ namespace NewEmployeeFinder.API
 
             services.AddControllers();
             services.AddRazorPages();
+            
 
             services.AddScoped<NotFoundFilter>();
 
@@ -91,11 +150,17 @@ namespace NewEmployeeFinder.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseOpenApi();
 
             app.UseSwaggerUi3();
+            ///app.UseSwaggerUI(c=>
+            ///{
+            ///    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestService");
+            ///});
 
             app.UseEndpoints(endpoints =>
             {
