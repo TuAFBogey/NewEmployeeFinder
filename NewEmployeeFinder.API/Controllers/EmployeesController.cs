@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace NewEmployeeFinder.API.Controllers
 {
-    [Authorize]
-    [ApiVersion("1.0")]
+    //[Authorize]
+    //[ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
@@ -42,7 +42,7 @@ namespace NewEmployeeFinder.API.Controllers
             return Ok(_mapper.Map<EmployeeDto>(employee));
         }
 
-        [ServiceFilter(typeof(NotFoundFilter))]
+        //[ServiceFilter(typeof(NotFoundFilter))]
         [HttpGet("{id}/department")]
         public async Task<IActionResult> GetWithDepartmentsById(int id)
         {

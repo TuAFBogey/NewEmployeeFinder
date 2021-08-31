@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace NewEmployeeFinder.API.IAuthService
+namespace NewEmployeeFinder.Core.Services
 {
-    public interface IAuthSrvc
+    public interface IUserService
     {
         bool CheckUser(string username, string password);
     }

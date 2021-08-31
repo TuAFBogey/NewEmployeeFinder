@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using NewEmployeeFinder.API.IAuthService;
+using NewEmployeeFinder.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +16,16 @@ namespace NewEmployeeFinder.API
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
 
-        readonly IAuthSrvc _authSrvc;
+        readonly IUserService _userService;
 
-        public BasicAuthenticationHandler( 
-            IAuthSrvc authSrvc,
+        public BasicAuthenticationHandler(
+            IUserService userService,
             IOptionsMonitor<AuthenticationSchemeOptions> options, 
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock ) : base(options , logger ,encoder, clock)
         {
-            _authSrvc = authSrvc;
+            _userService = userService;
         }
 
         protected override Task HandleChallengeAsync(AuthenticationProperties properties)
@@ -44,7 +44,7 @@ namespace NewEmployeeFinder.API
                 username = credentials.FirstOrDefault();
                 var password = credentials.LastOrDefault();
 
-                if (!_authSrvc.CheckUser(username, password))
+                if (!_userService.CheckUser(username, password))
                 {
                     throw new ArgumentException("Invalid username or password");
                 }

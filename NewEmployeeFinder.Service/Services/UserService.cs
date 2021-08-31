@@ -1,12 +1,11 @@
-﻿using NewEmployeeFinder.API.IAuthService;
+﻿using NewEmployeeFinder.Core.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace NewEmployeeFinder.API.AuthService
+namespace NewEmployeeFinder.Service.Services
 {
-    public class AuthSrvc : IAuthSrvc
+    public class UserService : IUserService
     {
         public bool CheckUser(string username, string password)
         {

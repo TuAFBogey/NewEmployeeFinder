@@ -7,9 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using NewEmployeeFinder.API.AuthService;
 using NewEmployeeFinder.API.Filters;
-using NewEmployeeFinder.API.IAuthService;
 using NewEmployeeFinder.Core.Services;
 using NewEmployeeFinder.Core.UnitOfWorks;
 using NewEmployeeFinder.Data;
@@ -45,7 +43,7 @@ namespace NewEmployeeFinder.API
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 
-            services.AddScoped<IAuthSrvc, AuthSrvc>();
+            services.AddScoped<IUserService, UserService>();
             services.AddVersionedApiExplorer(c =>
             {
                 c.GroupNameFormat = "'v'VVV";
@@ -74,10 +72,10 @@ namespace NewEmployeeFinder.API
                 c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
-                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                    Type = SecuritySchemeType.Http,
                     Scheme = "basic",
-                    In=Microsoft.OpenApi.Models.ParameterLocation.Header,
-                    Description="Basic Auth Header"
+                    In = ParameterLocation.Header,
+                    Description = "Basic Auth Header"
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
@@ -90,13 +88,14 @@ namespace NewEmployeeFinder.API
                             Id="basic"
                         }
                     },
-                    new string[]{}
+                    new string[]{ }
                     }
                 });
             });
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            
             services.AddRouting();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -156,11 +155,13 @@ namespace NewEmployeeFinder.API
 
             app.UseOpenApi();
 
+
+
             app.UseSwaggerUi3();
-            ///app.UseSwaggerUI(c=>
-            ///{
-            ///    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestService");
-            ///});
+            
+
+            app.UseStaticFiles();
+
 
             app.UseEndpoints(endpoints =>
             {

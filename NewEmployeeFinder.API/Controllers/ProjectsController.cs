@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace NewEmployeeFinder.API.Controllers
 {
-    [Authorize]
-    [ApiVersion("1.0")]
+    //[Authorize]
+    //[ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectsController : ControllerBase
