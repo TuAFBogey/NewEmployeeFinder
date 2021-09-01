@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NewEmployeeFinder.API\NewEmployeeFinder.API.csproj" />
+    <ProjectReference Include="..\..\NewEmployeeFinder.Data\NewEmployeeFinder.Data.csproj" />
+    <ProjectReference Include="..\..\NewEmployeeFinder.Entities\NewEmployeeFinder.Core.csproj" />
+    <ProjectReference Include="..\..\NewEmployeeFinder.Service\NewEmployeeFinder.Service.csproj" />
+  </ItemGroup>
+
+</Project>
